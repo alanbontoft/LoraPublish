@@ -1,0 +1,66 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/i2ctest.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        },
+        {	
+            "name": ".NET Core Remote Launch - Linux",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "~/target/i2ctest/i2ctest",
+            "args": [
+                //"/home/pi/test3.json"
+            ],
+            "cwd": "~/target/i2ctest",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+            "pipeCwd": "${workspaceRoot}",
+            "pipeProgram": "/usr/bin/ssh",
+            "pipeArgs": [
+                "-T", "pi@rpi3"
+            ],
+            "debuggerPath": "~/vsdbg/vsdbg"
+            }   
+        },
+        {
+            "name": ".NET Core Remote Launch - Windows",
+            "type": "coreclr",
+            "request": "launch",
+            // "preLaunchTask": "build",
+            "program": "/home/pi/target/LoraPublish/LoraPublish",
+            "args": ["eth0"],
+            "cwd": "/home/pi/target/LoraPublish",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "c:\\program files\\putty\\PLINK.EXE",
+                "pipeArgs": [
+                    "-pw",
+                    "raspberry",
+                    "pi@rpi3"
+                ],
+                "debuggerPath": "/home/pi/vsdbg/vsdbg"
+            }
+        }
+    ]
+}
