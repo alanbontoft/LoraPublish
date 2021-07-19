@@ -5,7 +5,7 @@ using System.Device.Gpio;
 using System.Threading;
 using System.IO.Ports;
 
-namespace i2ctest
+namespace LoraPublish
 {
     class Program
     {
@@ -176,7 +176,7 @@ namespace i2ctest
             Console.WriteLine();
 
             // write to serial port
-            var loramsg = $"{e.SignalTime.Hour:d02}:{e.SignalTime.Minute:d02}:{e.SignalTime.Second:d02} {co2:F2},{temp:F2},{rh:F2}\r";
+            var loramsg = $"{e.SignalTime.Hour:d02}:{e.SignalTime.Minute:d02}:{e.SignalTime.Second:d02},{co2:F2},{temp:F2},{rh:F2}\r";
             port.Write(loramsg);
         }
     }
